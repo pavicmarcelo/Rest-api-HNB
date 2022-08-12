@@ -1,7 +1,6 @@
 package com.rest.restapihnb.model;
 
-import com.fasterxml.jackson.annotation.JsonClassDescription;
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.*;
 import org.springframework.context.annotation.Bean;
 
 import javax.persistence.Entity;
@@ -11,27 +10,37 @@ import java.time.LocalDate;
 import java.util.Date;
 
 
-@Entity
+
 @JsonClassDescription
 @JsonFormat
+@Entity
 public class ExchangeHNB implements Serializable {
 
     @Id
+    @JsonIgnore
     private Long id;   // javeBeans imaju private fields i moraju imati gettere ili settere
+    @JsonProperty("Broj tečajnice")
     private String brojTecajnice;
-    @JsonFormat(pattern="dd.MM.yyyy")
-    private LocalDate datumPrimjene;
+    @JsonProperty("Datum primjene")
+   // @JsonFormat(pattern="dd.MM.yyyy")
+    private String datumPrimjene;
+    @JsonProperty("Država")
     private String drzava;
+    @JsonProperty("Šifra valute")
     private String sifraValute;
+    @JsonProperty("Valuta")
     private String valuta;
-    private Long jedinica;
+    @JsonProperty("Jedinica")
+    private String jedinica;
+    @JsonProperty("Kupovni za devize")
     private String kupivniZaDevize;
+    @JsonProperty("Srednji za devize")
     private String srednjiZaDevize;
+    @JsonProperty("Prodajni za devize")
     private String prodajniZaDevize;
 
 
-
-    public ExchangeHNB(String brojTecajnice, LocalDate datumPrimjene, String drzava, String sifraValute, String valuta, Long jedinica, String kupivniZaDevize, String srednjiZaDevize, String prodajniZaDevize) {
+    public ExchangeHNB(String brojTecajnice, String datumPrimjene, String drzava, String sifraValute, String valuta, String jedinica, String kupivniZaDevize, String srednjiZaDevize, String prodajniZaDevize) {
         this.brojTecajnice = brojTecajnice;
         this.datumPrimjene = datumPrimjene;
         this.drzava = drzava;
@@ -70,11 +79,11 @@ public class ExchangeHNB implements Serializable {
         this.brojTecajnice = brojTecajnice;
     }
 
-    public LocalDate getDatumPrimjene() {
+    public String getDatumPrimjene() {
         return datumPrimjene;
     }
 
-    public void setDatumPrimjene(LocalDate datumPrimjene) {
+    public void setDatumPrimjene(String datumPrimjene) {
         this.datumPrimjene = datumPrimjene;
     }
 
@@ -102,11 +111,11 @@ public class ExchangeHNB implements Serializable {
         this.valuta = valuta;
     }
 
-    public Long getJedinica() {
+    public String getJedinica() {
         return jedinica;
     }
 
-    public void setJedinica(Long jedinica) {
+    public void setJedinica(String jedinica) {
         this.jedinica = jedinica;
     }
 
@@ -135,12 +144,5 @@ public class ExchangeHNB implements Serializable {
     }
 
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
-    @Id
-    public Long getId() {
-        return id;
-    }
 }
