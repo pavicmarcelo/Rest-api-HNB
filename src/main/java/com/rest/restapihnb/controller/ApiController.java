@@ -1,6 +1,8 @@
 package com.rest.restapihnb.controller;
 
 
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rest.restapihnb.dto.UserProductDTO;
 import com.rest.restapihnb.model.Product;
@@ -47,7 +49,7 @@ public class ApiController {
 
 
 
-
+/*
     @RequestMapping (value = "/products", method = RequestMethod.GET, produces = "application/json;charset=UTF-8", consumes = "application/json;")
     public List<Product> findAllProducts() {
         return productRepo.findAll();
@@ -72,7 +74,7 @@ public class ApiController {
 
     @PutMapping(value = "updateUser/{id}")
     public String updateUser (@PathVariable long id, @RequestBody User user) {
-        User updatedUser = userRepo.findById(id).get();
+        User updatedUser = userService.findById(id).get();
         updatedUser.setFirstName(user.getFirstName());
         updatedUser.setLastName(user.getLastName());
         updatedUser.setEmail(user.getEmail());
@@ -86,9 +88,9 @@ public class ApiController {
         userRepo.delete(deleteUser);
         return "User with id: " + id + " is deleted!";
     }
+*/
 
-
-    @GetMapping(value = "/exchangeRateEUR")
+    @GetMapping(value = "/exchangeRateEUR")  // kopirano u hnbController
     public JSONArray getCurrencyExchangeRate() throws net.minidev.json.parser.ParseException {
         String url = "https://api.hnb.hr/tecajn/v1?valuta=EUR";
 
@@ -351,10 +353,38 @@ return exchangeHNB;
 
 
 
-    @GetMapping(value = "/getSrednji4")
-    public void getSrednji4() throws net.minidev.json.parser.ParseException {
+    @GetMapping(value = "/getSrednji4")   // prebačeno u HNBController
+    public void getSrednji4() throws net.minidev.json.parser.ParseException, IOException {
+
+        String url = "https://api.hnb.hr/tecajn/v1?valuta=EUR";
+
+        RestTemplate restTemplate = new RestTemplate();
+
+        JSONArray exchangeRateEUR = restTemplate.getForObject(url, JSONArray.class);
+
+        JSONParser parser = new JSONParser();
+        JSONArray jsonArray= (JSONArray) parser.parse(exchangeRateEUR.toString());
+
+
+        System.out.println("\n test  77777 = " + jsonArray.get(0).toString() ) ;
+
+
 
         JSONArray json = getCurrencyExchangeRate();
+
+        String jsonToString = json.get(0).toString();
+
+        System.out.println("JsonToString = " + jsonToString);
+
+        ObjectMapper objectMapper = new ObjectMapper();
+
+       // String respData = objectMapper.writeValueAsString(json.getBody());
+
+        ExchangeHNB exchangeHNB = objectMapper.readValue( jsonArray.get(0).toString(), ExchangeHNB.class);
+
+
+        System.out.println("Srednji tečaj 4 : " + exchangeHNB.getSrednjiZaDevize());
+
 
 
 
