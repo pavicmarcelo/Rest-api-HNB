@@ -90,7 +90,7 @@ public class ApiController {
     }
 */
 
-    @GetMapping(value = "/exchangeRateEUR")
+    @GetMapping(value = "/exchangeRateEUR")  // kopirano u hnbController
     public JSONArray getCurrencyExchangeRate() throws net.minidev.json.parser.ParseException {
         String url = "https://api.hnb.hr/tecajn/v1?valuta=EUR";
 
@@ -353,7 +353,7 @@ return exchangeHNB;
 
 
 
-    @GetMapping(value = "/getSrednji4")
+    @GetMapping(value = "/getSrednji4")   // prebačeno u HNBController
     public void getSrednji4() throws net.minidev.json.parser.ParseException, IOException {
 
         String url = "https://api.hnb.hr/tecajn/v1?valuta=EUR";
