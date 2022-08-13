@@ -242,6 +242,7 @@ return exchangeHNB;
             srednjiTecajString = (String) nov.get("Srednji za devize");
             if (srednjiTecajString != null) {
                 srednjiTecajString = srednjiTecajString.replace(",", ".");
+
             } else {
                 throw new Exception("srednjiTecajString je null!");
             }

@@ -29,8 +29,10 @@ public class Product {
     private String name;
     private BigDecimal price_hrk;
     private BigDecimal price_eur;
+  //  private BigDecimal ProductController;
     private String description;
     private Boolean isAvailable;
+
 
 
     public void setId(Long id) {
