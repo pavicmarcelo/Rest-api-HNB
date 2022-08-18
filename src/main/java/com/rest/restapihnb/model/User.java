@@ -3,14 +3,17 @@ package com.rest.restapihnb.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
-@Entity //maknuti?
+@Entity
 @Data // geter i seteri, toString...
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "users")
+@NonNull
 public class User {
 
     @Id
@@ -25,8 +28,13 @@ public class User {
 
     private String password;
 
+
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "product_id")
     private Product product;
+
+
+
+
 
 }

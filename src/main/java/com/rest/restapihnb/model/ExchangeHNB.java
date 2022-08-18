@@ -1,6 +1,7 @@
 package com.rest.restapihnb.model;
 
 import com.fasterxml.jackson.annotation.*;
+import lombok.Data;
 import org.springframework.context.annotation.Bean;
 
 import javax.persistence.Entity;
@@ -11,9 +12,10 @@ import java.util.Date;
 
 
 
-@JsonClassDescription
-@JsonFormat
+//@JsonClassDescription
+//@JsonFormat
 @Entity
+@Data
 public class ExchangeHNB implements Serializable {
 
     @Id

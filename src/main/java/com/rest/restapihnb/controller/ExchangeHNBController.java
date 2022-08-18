@@ -15,7 +15,6 @@ import java.math.BigDecimal;
 @RequestMapping("/exchangeHNB")
 public class ExchangeHNBController {
 
-// port od postgreSQL = 5432
 
     @GetMapping(value = "/jsonFromHNBApi")
     public JSONArray getJsonFromHNBApi() throws net.minidev.json.parser.ParseException {
