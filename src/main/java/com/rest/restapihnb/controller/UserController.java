@@ -1,15 +1,11 @@
 package com.rest.restapihnb.controller;
 
 
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rest.restapihnb.dto.UserProductDTO;
-import com.rest.restapihnb.model.Product;
 import com.rest.restapihnb.model.ExchangeHNB;
-import com.rest.restapihnb.model.User;
-import com.rest.restapihnb.repository.ProductRepo;
-import com.rest.restapihnb.repository.UserRepo;
+
 
 
 import com.rest.restapihnb.service.UserService;
@@ -36,7 +32,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/exchange")
-public class ApiController {
+public class UserController {
 
     @Autowired
     private UserService userService;
@@ -226,8 +222,8 @@ return exchangeHNB;
 
 
 
-    @GetMapping(value = "/getSrednjiZaDevize")
-    public BigDecimal getSrednjiZaDevize() throws Exception {
+    @GetMapping(value = "/getSrednjiZaDevizeFromApiController")
+    public BigDecimal getSrednjiZaDevizeFromApiController() throws Exception {
 
         String srednjiTecajString = null;
 
