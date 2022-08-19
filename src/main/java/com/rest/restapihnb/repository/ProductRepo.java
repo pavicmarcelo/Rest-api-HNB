@@ -8,6 +8,4 @@ public interface ProductRepo extends JpaRepository<Product, Long> {
 
     Product getProductByCode(String code);
 
-   // Product createProduct(Product product);
-
 }
