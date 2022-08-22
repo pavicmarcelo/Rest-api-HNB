@@ -38,7 +38,7 @@ public class ProductController {
     }
 
 
-    @RequestMapping(value = "/create-product", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/createProduct", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public @ResponseBody
     Product creatingProduct(@RequestBody Product product) throws Exception {
 
