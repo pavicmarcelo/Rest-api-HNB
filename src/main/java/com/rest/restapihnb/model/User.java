@@ -18,7 +18,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     @Column
     private String firstName;
     @Column
@@ -26,15 +26,8 @@ public class User {
     @Column
     private String email;
 
-    private String password;
-
-
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "product_id")
-    private Product product;
-
-
-
-
+    //@ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @Column(name = "product_id")
+    private Long productId;
 
 }

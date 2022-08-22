@@ -27,7 +27,7 @@ public class ProductService {
         if (productById != null) {
             return productById;
         } else {
-            throw new Exception("There is no user with that Id number.");
+            throw new Exception("There is no product with that Id number.");
         }
 
     }
